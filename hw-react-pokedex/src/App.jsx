@@ -1,10 +1,10 @@
-import PokemonList from './components/FetchData';
+import FetchData from './components/FetchData';
 
 function App() {
   return (
     <>
       <div>
-        <PokemonList />
+        <FetchData />
       </div>
     </>
   );
