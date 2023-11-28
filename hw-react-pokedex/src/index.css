@@ -5,8 +5,7 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #303846;
-  /* background-color: white; */
+  background-color: white;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,22 +20,4 @@ body {
   min-height: 100vh;
   text-align: center;
   justify-content: center;
-}
-
-.pokemon-name,
-.pokemon-number {
-  color: black;
-}
-
-.pokemon-card {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.pokemon {
-  background-color: white;
-  width: 250px;
-  height: 250px;
 }
