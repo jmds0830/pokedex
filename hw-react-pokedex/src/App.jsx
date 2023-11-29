@@ -1,11 +1,11 @@
-import FetchData from './components/FetchData';
+// import FetchData from './components/FetchData';
+import { RouterProvider } from 'react-router-dom';
+import router from './router';
 
 function App() {
   return (
     <>
-      <div>
-        <FetchData />
-      </div>
+      <RouterProvider router={router} />
     </>
   );
 }

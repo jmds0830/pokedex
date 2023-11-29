@@ -15,8 +15,10 @@
 
 body {
   margin: 0;
-  display: flex;
-  min-width: 320px;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
   min-height: 100vh;
   text-align: center;
   justify-content: center;

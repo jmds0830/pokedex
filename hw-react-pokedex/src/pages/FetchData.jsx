@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './FetchData.module.css';
+import { Link, Outlet } from 'react-router-dom';
 
 const typeStyles = {
   fire: { backgroundColor: 'rgb(240, 128, 48)' },
@@ -26,6 +27,8 @@ function FetchData() {
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedType, setSelectedType] = useState('All');
 
   async function fetchPokeImage(id) {
     try {
@@ -33,7 +36,7 @@ function FetchData() {
       const image = await response.json();
       return image.sprites.front_default;
     } catch (error) {
-      console.log(error.message);
+      console.error('Error fetching Pokemon data', error);
     }
   }
 
@@ -44,7 +47,7 @@ function FetchData() {
 
       return String(number.id).padStart(3, '0');
     } catch (error) {
-      console.log(error.message);
+      console.error('Error fetching Pokemon data', error);
     }
   }
 
@@ -56,7 +59,7 @@ function FetchData() {
       const types = data.types.map((type) => type.type.name);
       return types;
     } catch (error) {
-      console.log(error.message);
+      console.error('Error fetching Pokemon data', error);
     }
   }
 
@@ -79,7 +82,7 @@ function FetchData() {
 
       setPokemon([...pokemon, ...pokemonList]);
     } catch (error) {
-      console.log(error.message);
+      console.error('Error fetching Pokemon data', error);
     }
   }
 
@@ -91,20 +94,80 @@ function FetchData() {
     fetchPokeData();
   }, [offset, limit]);
 
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
+  };
+
+  const filteredPokemon =
+    selectedType === 'All'
+      ? pokemon.filter((item) =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      : pokemon
+          // .filter((item) => item.type.includes(selectedType))
+          .filter((item) =>
+            item.name.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+
   return (
     <>
-      <div className={styles.navbar}>NAV</div>
+      <div className={styles.navbar}>
+        <img
+          className={styles.navbarImage}
+          src="https://ntrung1008.github.io/FrontEnd_Pokedex/resources/Pokedex.png"
+        />
+        <div className={styles.searchBox}>
+          <select
+            className={styles.select}
+            defaultValue="All"
+            onChange={handleTypeChange}
+          >
+            <option value disabled>
+              Select Type
+            </option>
+            <option value="All">All Types</option>
+            <option value="Fire">Fire</option>
+            <option value="Water">Water</option>
+            <option value="Grass">Grass</option>
+            <option value="Poison">Poison</option>
+            <option value="Bug">Bug</option>
+            <option value="Flying">Flying</option>
+            <option value="Normal">Normal</option>
+            <option value="Electric">Electric</option>
+            <option value="Ground">Ground</option>
+            <option value="Fairy">Fairy</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Psychic">Psychic</option>
+            <option value="Rock">Rock</option>
+            <option value="Steel">Steel</option>
+            <option value="Ice">Ice</option>
+            <option value="Ghost">Ghost</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Dark">Dark</option>
+          </select>
+          <input
+            className={styles.search}
+            type="text"
+            placeholder="Search Pokemon"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
       <div className={styles.pokemonCard}>
-        {pokemon.map((item, index) => (
-          <div className={styles.pokemonBorder} key={index}>
+        {filteredPokemon.map((item, index) => (
+          <div className={styles.pokemonBorder} key={item.name}>
             <div className={styles.pokemonNumber}>#{item.number}</div>
             <div className={styles.pokemon} key={index}>
-              <img
-                className={styles.pokemonImage}
-                src={item.sprite}
-                alt={item.name}
-              />
-              <div className={styles.pokemonName}>{item.name}</div>
+              <Link to={`/${item.name}`} className={styles.link}>
+                <img
+                  className={styles.pokemonImage}
+                  src={item.sprite}
+                  alt={item.name}
+                />
+                <div className={styles.pokemonName}>{item.name}</div>
+              </Link>
+
               <div>
                 {item.type.map((type, typeIndex) => (
                   <span
@@ -120,7 +183,6 @@ function FetchData() {
           </div>
         ))}
       </div>
-
       <button className={styles.loadMoreButton} onClick={loadMore}>
         Load More
       </button>
