@@ -11,6 +11,7 @@ const router = createBrowserRouter([
   {
     path: ':pokemonId',
     element: <PokemonInfo />,
+    children: [],
   },
   {
     path: '*',

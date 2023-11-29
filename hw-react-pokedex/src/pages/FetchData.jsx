@@ -104,7 +104,7 @@ function FetchData() {
           item.name.toLowerCase().includes(searchTerm.toLowerCase())
         )
       : pokemon
-          // .filter((item) => item.type.includes(selectedType))
+          .filter((item) => item.type.includes(selectedType))
           .filter((item) =>
             item.name.toLowerCase().includes(searchTerm.toLowerCase())
           );
@@ -119,31 +119,31 @@ function FetchData() {
         <div className={styles.searchBox}>
           <select
             className={styles.select}
-            defaultValue="All"
+            value={selectedType}
             onChange={handleTypeChange}
           >
             <option value disabled>
               Select Type
             </option>
             <option value="All">All Types</option>
-            <option value="Fire">Fire</option>
-            <option value="Water">Water</option>
-            <option value="Grass">Grass</option>
-            <option value="Poison">Poison</option>
-            <option value="Bug">Bug</option>
-            <option value="Flying">Flying</option>
-            <option value="Normal">Normal</option>
-            <option value="Electric">Electric</option>
-            <option value="Ground">Ground</option>
-            <option value="Fairy">Fairy</option>
-            <option value="Fighting">Fighting</option>
-            <option value="Psychic">Psychic</option>
-            <option value="Rock">Rock</option>
-            <option value="Steel">Steel</option>
-            <option value="Ice">Ice</option>
-            <option value="Ghost">Ghost</option>
-            <option value="Dragon">Dragon</option>
-            <option value="Dark">Dark</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+            <option value="poison">Poison</option>
+            <option value="bug">Bug</option>
+            <option value="flying">Flying</option>
+            <option value="normal">Normal</option>
+            <option value="electric">Electric</option>
+            <option value="ground">Ground</option>
+            <option value="fairy">Fairy</option>
+            <option value="fighting">Fighting</option>
+            <option value="psychic">Psychic</option>
+            <option value="rock">Rock</option>
+            <option value="steel">Steel</option>
+            <option value="ice">Ice</option>
+            <option value="ghost">Ghost</option>
+            <option value="dragon">Dragon</option>
+            <option value="dark">Dark</option>
           </select>
           <input
             className={styles.search}
@@ -156,36 +156,38 @@ function FetchData() {
       </div>
       <div className={styles.pokemonCard}>
         {filteredPokemon.map((item, index) => (
-          <div className={styles.pokemonBorder} key={item.name}>
-            <div className={styles.pokemonNumber}>#{item.number}</div>
-            <div className={styles.pokemon} key={index}>
-              <Link to={`/${item.name}`} className={styles.link}>
+          <Link to={`/${item.name}`} className={styles.link}>
+            <div className={styles.pokemonBorder} key={item.name}>
+              <div className={styles.pokemonNumber}>#{item.number}</div>
+              <div className={styles.pokemon} key={index}>
                 <img
                   className={styles.pokemonImage}
                   src={item.sprite}
                   alt={item.name}
                 />
                 <div className={styles.pokemonName}>{item.name}</div>
-              </Link>
-
-              <div>
-                {item.type.map((type, typeIndex) => (
-                  <span
-                    className={styles.pokemonType}
-                    key={typeIndex}
-                    style={typeStyles[type]}
-                  >
-                    {type}
-                  </span>
-                ))}
+                <div>
+                  {item.type.map((type, typeIndex) => (
+                    <span
+                      className={styles.pokemonType}
+                      key={typeIndex}
+                      style={typeStyles[type]}
+                    >
+                      {type}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
+        <Outlet />
       </div>
-      <button className={styles.loadMoreButton} onClick={loadMore}>
-        Load More
-      </button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.loadMoreButton} onClick={loadMore}>
+          Load More
+        </button>
+      </div>
 
       <div className={styles.footer}>
         <span>© Jhune Michael Segismundo</span>

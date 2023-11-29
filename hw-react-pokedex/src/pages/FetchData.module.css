@@ -56,9 +56,11 @@
 
 .pokemonCard {
   display: flex;
+  flex-grow: 1;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  align-items: center;
   margin-inline: 50px;
   min-height: calc(100vh - 169px);
 }
@@ -88,7 +90,7 @@
 .pokemonImage {
   width: 100px;
   height: 100px;
-  margin-top: -10px;
+  margin-top: 5px;
 }
 
 .pokemonNumber {
@@ -111,6 +113,7 @@
 
 .link {
   text-decoration: none;
+  color: white;
 }
 
 .loadMoreButton {
@@ -121,5 +124,5 @@
   font-size: 14px;
   border-color: rgb(57, 107, 186);
   background-color: rgb(255, 224, 49);
-  margin: 50px;
+  margin-bottom: 50px;
 }

@@ -9,7 +9,7 @@ function PokemonInfo() {
   useEffect(() => {
     async function fetchPokemonData() {
       try {
-        console.log('Fetching data for Pokemon ID:', pokemonId); // Log for debugging
+        console.log('Fetching data for Pokemon ID:', pokemonId);
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
         );
@@ -29,6 +29,12 @@ function PokemonInfo() {
 
   return (
     <>
+      <div className={styles.navbar}>
+        <img
+          className={styles.navbarImage}
+          src="https://ntrung1008.github.io/FrontEnd_Pokedex/resources/Pokedex.png"
+        />
+      </div>
       <div>
         <img
           className={styles.image}
