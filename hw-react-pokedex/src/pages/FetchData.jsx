@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from './FetchData.module.css';
 import { Link, Outlet } from 'react-router-dom';
 
-const typeStyles = {
+export const typeStyles = {
   fire: { backgroundColor: 'rgb(240, 128, 48)' },
   water: { backgroundColor: 'rgb(24,71,215)' },
   grass: { backgroundColor: 'rgb(80, 199, 99)' },
@@ -80,7 +80,15 @@ function FetchData() {
         })
       );
 
-      setPokemon([...pokemon, ...pokemonList]);
+      setPokemon((prevPokemon) => {
+        const filteredNewPokemon = pokemonList.filter(
+          (newPokemon) =>
+            !prevPokemon.some(
+              (existingPokemon) => existingPokemon.name === newPokemon.name
+            )
+        );
+        return [...prevPokemon, ...filteredNewPokemon];
+      });
     } catch (error) {
       console.error('Error fetching Pokemon data', error);
     }
@@ -96,6 +104,13 @@ function FetchData() {
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
+    setOffset(0);
+    setLimit(200);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setLimit(200);
   };
 
   const filteredPokemon =
@@ -115,6 +130,7 @@ function FetchData() {
         <img
           className={styles.navbarImage}
           src="https://ntrung1008.github.io/FrontEnd_Pokedex/resources/Pokedex.png"
+          alt="Pokedex"
         />
         <div className={styles.searchBox}>
           <select
@@ -122,9 +138,6 @@ function FetchData() {
             value={selectedType}
             onChange={handleTypeChange}
           >
-            <option value disabled>
-              Select Type
-            </option>
             <option value="All">All Types</option>
             <option value="fire">Fire</option>
             <option value="water">Water</option>
@@ -150,14 +163,15 @@ function FetchData() {
             type="text"
             placeholder="Search Pokemon"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleSearchChange}
           />
         </div>
       </div>
+
       <div className={styles.pokemonCard}>
         {filteredPokemon.map((item, index) => (
-          <Link to={`/${item.name}`} className={styles.link}>
-            <div className={styles.pokemonBorder} key={item.name}>
+          <Link to={`/${item.name}`} className={styles.link} key={index}>
+            <div className={styles.pokemonBorder}>
               <div className={styles.pokemonNumber}>#{item.number}</div>
               <div className={styles.pokemon} key={index}>
                 <img
@@ -181,7 +195,6 @@ function FetchData() {
             </div>
           </Link>
         ))}
-        <Outlet />
       </div>
       <div className={styles.buttonContainer}>
         <button className={styles.loadMoreButton} onClick={loadMore}>
@@ -190,9 +203,8 @@ function FetchData() {
       </div>
 
       <div className={styles.footer}>
-        <span>© Jhune Michael Segismundo</span>
-        <br />
-        <span>Made using React</span>
+        <div>© Jhune Michael Segismundo</div>
+        <div>Made using React</div>
       </div>
     </>
   );
