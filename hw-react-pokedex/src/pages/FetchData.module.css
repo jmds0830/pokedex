@@ -60,6 +60,7 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  align-items: center;
   margin-inline: 50px;
   min-height: 100vh;
 }

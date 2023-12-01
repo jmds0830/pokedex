@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './FetchData.module.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const typeStyles = {
   fire: { backgroundColor: 'rgb(240, 128, 48)' },
@@ -81,12 +81,17 @@ function FetchData() {
       );
 
       setPokemon((prevPokemon) => {
-        const filteredNewPokemon = pokemonList.filter(
-          (newPokemon) =>
+        const filteredNewPokemon = pokemonList.filter((newPokemon) => {
+          if (
             !prevPokemon.some(
               (existingPokemon) => existingPokemon.name === newPokemon.name
             )
-        );
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        });
         return [...prevPokemon, ...filteredNewPokemon];
       });
     } catch (error) {

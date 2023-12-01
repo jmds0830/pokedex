@@ -30,6 +30,7 @@ function PokemonInfo() {
       const flavorText = result.flavor_text_entries.find(
         (entry) => entry.language.name === 'en'
       );
+
       setPokemonText(flavorText.flavor_text);
     } catch (error) {
       console.error('Error fetching Pokemon data', error);
@@ -45,6 +46,10 @@ function PokemonInfo() {
     return <div>Loading...</div>;
   }
 
+  const number = String(pokemonData.id).padStart(3, '0');
+  const height = (pokemonData.height * 0.1).toFixed(1);
+  const weight = (pokemonData.weight * 0.1).toFixed(1);
+
   return (
     <>
       <div className={styles.navbar}>
@@ -54,31 +59,45 @@ function PokemonInfo() {
         />
       </div>
       <Link to="/">Go back</Link>
-      <div className={styles.pokemonCard}>
-        <img
-          className={styles.image}
-          src={pokemonData.sprites.front_default}
-          alt={pokemonData.name}
-        />
-        <h2 className={styles.pokemonName}>{pokemonData.name}</h2>
 
-        <div>
-          {pokemonData.types.map((type, typeIndex) => (
-            <span
-              key={typeIndex}
-              className={styles.pokemonType}
-              style={typeStyles[type.type.name]}
-            >
-              {type.type.name}
-            </span>
-          ))}
+      <div className={styles.box}>
+        <div className={styles.pokemonCard}>
+          <div className={styles.numberContainer}>
+            <h2 className={styles.pokemonNumber}>#{number}</h2>
+            <h2 className={styles.pokemonName}>{pokemonData.name}</h2>
+          </div>
+          <img
+            className={styles.pokemonImage}
+            src={pokemonData.sprites.front_default}
+            alt={pokemonData.name}
+          />
+          {/* <div className={styles.size}>
+            {pokemonData.stats.map((stat, index) => (
+              <p key={index}>
+                {stat.stat.name}: {stat.base_stat}
+              </p>
+            ))}
+          </div> */}
+
+          <div>
+            {pokemonData.types.map((type, typeIndex) => (
+              <span
+                key={typeIndex}
+                className={styles.pokemonType}
+                style={typeStyles[type.type.name]}
+              >
+                {type.type.name}
+              </span>
+            ))}
+          </div>
+          <span className={styles.size}>Height: {height} m</span>
+          <span className={styles.size}>Weight: {weight} kg</span>
+          <span className={styles.description}>Description:</span>
+          <p className={styles.para}>{pokemonText}</p>
+          <Link to="stats">Stats</Link>
+          <Link to="moves">Moves</Link>
+          <Outlet />
         </div>
-        <p className={styles.para}>Height: {pokemonData.height} in.</p>
-        <p className={styles.para}>Weight: {pokemonData.weight} lbs.</p>
-        <p className={styles.para}> {pokemonText}</p>
-        <Link to="about">About</Link>
-        <Link to="moves">Moves</Link>
-        <Outlet />
       </div>
 
       <div className={styles.footer}>

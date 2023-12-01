@@ -1,4 +1,3 @@
-// import FetchData from './components/FetchData';
 import { RouterProvider } from 'react-router-dom';
 import router from './router';
 
