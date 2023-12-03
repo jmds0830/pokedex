@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import styles from './Stats.module.css';
+import styles from './styles/Stats.module.css';
 
 function Stats() {
   const [pokemonData, setPokemonData] = useState(null);

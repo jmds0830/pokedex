@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import styles from './Moves.module.css';
+import styles from '../styles/Moves.module.css';
 
 function Moves() {
   const [moves, setMoves] = useState([]);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styles from './FetchData.module.css';
+import styles from './styles/FetchData.module.css';
 import { Link } from 'react-router-dom';
 
 export const typeStyles = {
