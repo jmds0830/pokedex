@@ -31,11 +31,16 @@ function Moves() {
   }, [pokemonId]);
 
   return (
-    <div className={styles.pokemonMoves}>
-      {moves.map((move, index) => (
-        <span key={index}>{move}, </span>
-      ))}
-    </div>
+    <>
+      <div className={styles.pokemonMoves}>
+        <h2>Moves:</h2>
+        <div className={styles.content}>
+          {moves.map((move, index) => (
+            <span key={index}>{move}, </span>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 

@@ -52,13 +52,16 @@ function PokemonInfo() {
 
   return (
     <>
-      <div className={styles.navbar}>
+      {/* <div className={styles.navbar}>
         <img
           className={styles.navbarImage}
           src="https://ntrung1008.github.io/FrontEnd_Pokedex/resources/Pokedex.png"
         />
-      </div>
-      <Link to="/">Go back</Link>
+      </div> */}
+
+      <h3 className={styles.back}>
+        <Link to="/">Go back</Link>
+      </h3>
 
       <div className={styles.box}>
         <div className={styles.pokemonCard}>
@@ -94,16 +97,23 @@ function PokemonInfo() {
           <span className={styles.size}>Weight: {weight} kg</span>
           <span className={styles.description}>Description:</span>
           <p className={styles.para}>{pokemonText}</p>
-          <Link to="stats">Stats</Link>
-          <Link to="moves">Moves</Link>
+          <div className={styles.children}>
+            <h3>
+              <Link to="stats">Stats</Link>
+            </h3>
+            <h3>
+              <Link to="moves">Moves</Link>
+            </h3>
+          </div>
+
           <Outlet />
         </div>
       </div>
 
-      <div className={styles.footer}>
+      {/* <div className={styles.footer}>
         <div>© Jhune Michael Segismundo</div>
         <div>Made using React</div>
-      </div>
+      </div> */}
     </>
   );
 }

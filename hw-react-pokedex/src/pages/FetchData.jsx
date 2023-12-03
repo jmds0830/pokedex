@@ -208,8 +208,8 @@ function FetchData() {
       </div>
 
       <div className={styles.footer}>
-        <div>© Jhune Michael Segismundo</div>
-        <div>Made using React</div>
+        <div>Made by Jhune Michael Segismundo using React</div>
+        <div>Information sourced from pokeAPI</div>
       </div>
     </>
   );

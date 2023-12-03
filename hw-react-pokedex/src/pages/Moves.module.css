@@ -1,4 +1,9 @@
 .pokemonMoves {
   color: black;
-  margin: 50px;
+  margin-inline: 100px;
+  margin-bottom: 50px;
+}
+
+.content {
+  text-align: justify;
 }
