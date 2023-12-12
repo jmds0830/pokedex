@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import styles from './styles/PokemonInfo.module.css';
+import styles from '../styles/PokemonInfo.module.css';
 import { typeStyles } from './FetchData';
 import { Link } from 'react-router-dom';
 
