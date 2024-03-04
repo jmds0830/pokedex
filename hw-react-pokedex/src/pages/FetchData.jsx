@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from '../styles/FetchData.module.css';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 
 export const typeStyles = {
   fire: { backgroundColor: 'rgb(240, 128, 48)' },
@@ -26,7 +27,7 @@ export const typeStyles = {
 function FetchData() {
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(20);
+  const [limit, setLimit] = useState(30);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('All');
 
@@ -131,13 +132,8 @@ function FetchData() {
 
   return (
     <>
-      <div className={styles.navbar}>
-        <img
-          className={styles.navbarImage}
-          src="https://ntrung1008.github.io/FrontEnd_Pokedex/resources/Pokedex.png"
-          alt="Pokedex"
-        />
-        <div className={styles.searchBox}>
+      <Header>
+        <div className={styles.navbarMenu}>
           <select
             className={styles.select}
             value={selectedType}
@@ -171,46 +167,42 @@ function FetchData() {
             onChange={handleSearchChange}
           />
         </div>
-      </div>
-
-      <div className={styles.pokemonCard}>
-        {filteredPokemon.map((item, index) => (
-          <Link to={`/${item.name}`} className={styles.link} key={index}>
-            <div className={styles.pokemonBorder}>
-              <div className={styles.pokemonNumber}>#{item.number}</div>
-              <div className={styles.pokemon} key={index}>
-                <img
-                  className={styles.pokemonImage}
-                  src={item.sprite}
-                  alt={item.name}
-                />
-                <div className={styles.pokemonName}>{item.name}</div>
-                <div>
-                  {item.type.map((type, typeIndex) => (
-                    <span
-                      className={styles.pokemonType}
-                      key={typeIndex}
-                      style={typeStyles[type]}
-                    >
-                      {type}
-                    </span>
-                  ))}
+        <div className={styles.mainContainer}>
+          <div className={styles.pokemonCard}>
+            {filteredPokemon.map((item, index) => (
+              <Link to={`/${item.name}`} className={styles.link} key={index}>
+                <div className={styles.pokemonBorder}>
+                  <div className={styles.pokemonNumber}>#{item.number}</div>
+                  <div className={styles.pokemon} key={index}>
+                    <img
+                      className={styles.pokemonImage}
+                      src={item.sprite}
+                      alt={item.name}
+                    />
+                    <div className={styles.pokemonName}>{item.name}</div>
+                    <div>
+                      {item.type.map((type, typeIndex) => (
+                        <span
+                          className={styles.pokemonType}
+                          key={typeIndex}
+                          style={typeStyles[type]}
+                        >
+                          {type}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-      <div className={styles.buttonContainer}>
-        <button className={styles.loadMoreButton} onClick={loadMore}>
-          Load More
-        </button>
-      </div>
-
-      <div className={styles.footer}>
-        <div>Made by Jhune Michael Segismundo using React</div>
-        <div>Information sourced from pokeAPI</div>
-      </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className={styles.buttonContainer}>
+          <button className={styles.loadMoreButton} onClick={loadMore}>
+            Load More
+          </button>
+        </div>
+      </Header>
     </>
   );
 }

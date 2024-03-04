@@ -1,7 +1,29 @@
-.pokemonStats {
+.stats {
   color: black;
+  padding-inline: 20px;
 }
 
 .statsContent {
+  margin-top: 30px;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
   margin-bottom: 50px;
+}
+
+hr {
+  width: 90%;
+}
+
+.statContainer {
+  display: flex;
+  text-align: left;
+}
+
+.statContainer span {
+  width: 125px;
+}
+
+.graph {
+  height: 20px;
 }

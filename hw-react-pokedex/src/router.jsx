@@ -4,6 +4,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import PokemonInfo from './pages/PokemonInfo';
 import Moves from './pages/Moves';
 import Stats from './pages/Stats';
+import Abilities from './pages/Abilities';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: 'stats',
         element: <Stats />,
+      },
+      {
+        path: 'abilities',
+        element: <Abilities />,
       },
       {
         path: 'moves',

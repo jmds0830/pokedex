@@ -1,9 +1,14 @@
 .pokemonMoves {
   color: black;
-  margin-inline: 100px;
+  padding-inline: 20px;
   margin-bottom: 50px;
 }
 
 .content {
+  margin-top: 30px;
   text-align: justify;
+}
+
+hr {
+  width: 90%;
 }
