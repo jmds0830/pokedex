@@ -196,11 +196,11 @@ function FetchData() {
               </Link>
             ))}
           </div>
-        </div>
-        <div className={styles.buttonContainer}>
-          <button className={styles.loadMoreButton} onClick={loadMore}>
-            Load More
-          </button>
+          <div className={styles.buttonContainer}>
+            <button className={styles.loadMoreButton} onClick={loadMore}>
+              Load More
+            </button>
+          </div>
         </div>
       </Header>
     </>

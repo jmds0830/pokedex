@@ -76,6 +76,11 @@ function PokemonInfo() {
                 className={styles.pokemonImage}
                 src={pokemonData.sprites.front_default}
                 alt={pokemonData.name}
+              />{' '}
+              <img
+                className={styles.pokemonImageBack}
+                src={pokemonData.sprites.back_default}
+                alt={pokemonData.name}
               />
             </div>
             <div>
@@ -118,15 +123,6 @@ function PokemonInfo() {
                   style={{ color: backgroundColor }}
                 >
                   <h3> ABILITIES</h3>
-                </Link>
-              </div>
-              <div>
-                <Link
-                  className={styles.link}
-                  to="moves"
-                  style={{ color: backgroundColor }}
-                >
-                  <h3>MOVES</h3>
                 </Link>
               </div>
             </div>

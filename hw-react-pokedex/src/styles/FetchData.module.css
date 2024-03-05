@@ -109,6 +109,10 @@
   cursor: pointer;
 }
 
+.loading {
+  color: black;
+}
+
 /* MOBILE VIEW */
 
 @media screen and (min-width: 410px) and (max-width: 455px) {

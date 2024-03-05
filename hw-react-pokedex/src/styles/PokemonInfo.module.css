@@ -41,8 +41,25 @@
   gap: 10px;
   color: white;
 }
+.imageContainer {
+  height: 180px;
+}
+
+.imageContainer:hover .pokemonImage {
+  display: none;
+}
+
+.imageContainer:hover .pokemonImageBack {
+  display: flex;
+}
 
 .pokemonImage {
+  height: 180px;
+  width: 180px;
+}
+
+.pokemonImageBack {
+  display: none;
   height: 180px;
   width: 180px;
 }
@@ -54,6 +71,7 @@
   padding-inline: 20px;
   border-radius: 15px;
   font-size: 18px;
+  color: white;
 }
 
 .sizeContainer {
