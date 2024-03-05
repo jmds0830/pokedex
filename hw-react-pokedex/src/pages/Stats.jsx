@@ -29,12 +29,6 @@ function Stats() {
         <div className={styles.stats}>
           <h2>Base Stats:</h2>
           <div className={styles.statsContent}>
-            {/* {pokemonData.stats.map((stat, index) => (
-              <p key={index}>
-                {stat.stat.name}: {stat.base_stat}
-              </p>
-            ))} */}
-
             <div className={styles.statContainer}>
               <span>hp: {pokemonData.stats[0].base_stat}</span>
               <div
