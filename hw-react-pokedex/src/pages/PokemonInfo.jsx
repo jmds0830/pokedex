@@ -76,7 +76,7 @@ function PokemonInfo() {
                 className={styles.pokemonImage}
                 src={pokemonData.sprites.front_default}
                 alt={pokemonData.name}
-              />{' '}
+              />
               <img
                 className={styles.pokemonImageBack}
                 src={pokemonData.sprites.back_default}
