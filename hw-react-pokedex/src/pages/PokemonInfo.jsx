@@ -59,7 +59,7 @@ function PokemonInfo() {
       <Header>
         <h3 className={styles.back}>
           <Link className={styles.backButton} to="/">
-            <FaArrowLeftLong />
+            <FaArrowLeftLong size="20px" />
           </Link>
         </h3>
         <div className={styles.box}>
@@ -90,41 +90,45 @@ function PokemonInfo() {
               ))}
             </div>
             <div className={styles.sizeContainer}>
-              <span className={styles.size}>Height: {height} m</span>
-              <span className={styles.size}>Weight: {weight} kg</span>
+              <div className={styles.size}>
+                <span>Height: {height} m</span>
+              </div>
+              <div className={styles.size}>
+                <span>Weight: {weight} kg</span>
+              </div>
             </div>
             <div className={styles.descriptionContainer}>
               <span className={styles.description}>Description:</span>
               <p className={styles.para}>{pokemonText}</p>
             </div>
             <div className={styles.children}>
-              <h3>
+              <div>
                 <Link
                   className={styles.link}
                   to="stats"
                   style={{ color: backgroundColor }}
                 >
-                  STATS
+                  <h3>STATS</h3>
                 </Link>
-              </h3>
-              <h3>
+              </div>
+              <div>
                 <Link
                   className={styles.link}
                   to="abilities"
                   style={{ color: backgroundColor }}
                 >
-                  ABILITIES
+                  <h3> ABILITIES</h3>
                 </Link>
-              </h3>
-              <h3>
+              </div>
+              <div>
                 <Link
                   className={styles.link}
                   to="moves"
                   style={{ color: backgroundColor }}
                 >
-                  MOVES
+                  <h3>MOVES</h3>
                 </Link>
-              </h3>
+              </div>
             </div>
             <Outlet className={styles.outlet} />
           </div>

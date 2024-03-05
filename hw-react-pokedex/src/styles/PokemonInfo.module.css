@@ -8,12 +8,16 @@
   color: black;
 }
 
+.backButton:hover {
+  color: red;
+}
+
 .box {
   display: flex;
   justify-content: center;
-  padding-inline: 20px;
+  padding-inline: 15px;
   min-height: 100vh;
-  max-width: 700px;
+  max-width: 650px;
   padding-bottom: 50px;
   margin: auto;
 }
@@ -24,17 +28,18 @@
   align-items: center;
   width: 100%;
   border: solid 1px gray;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
   gap: 20px;
 }
 
 .numberContainer {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
   gap: 10px;
-  background-color: rgb(223, 223, 223);
+  color: white;
 }
 
 .pokemonImage {
@@ -58,7 +63,8 @@
 
 .size {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  gap: 5px;
   color: black;
   margin-top: 20px;
 }
@@ -78,8 +84,27 @@
 .children {
   display: flex;
   gap: 20px;
+  padding-bottom: 30px;
 }
 
 .outlet {
   margin-bottom: 50px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* MOBILE VIEW */
+
+@media screen and (max-width: 455px) {
+  .box {
+    zoom: 90%;
+  }
 }

@@ -32,7 +32,6 @@ function Moves() {
 
   return (
     <>
-      <hr />
       <div className={styles.pokemonMoves}>
         <h2>Moves:</h2>
         <div className={styles.content}>

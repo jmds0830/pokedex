@@ -1,6 +1,7 @@
 .stats {
   color: black;
   padding-inline: 20px;
+  margin-top: -50px;
 }
 
 .statsContent {
@@ -9,10 +10,6 @@
   gap: 5px;
   flex-direction: column;
   margin-bottom: 50px;
-}
-
-hr {
-  width: 90%;
 }
 
 .statContainer {

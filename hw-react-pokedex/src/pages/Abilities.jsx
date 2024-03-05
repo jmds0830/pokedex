@@ -24,7 +24,6 @@ function Abilities() {
 
   return (
     <>
-      <hr />
       <div className={styles.pokemonAbilities}>
         {pokemonData && (
           <div className={styles.abilities}>

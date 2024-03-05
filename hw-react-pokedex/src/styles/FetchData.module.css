@@ -29,7 +29,7 @@
 }
 
 .mainContainer {
-  padding-inline: 20px;
+  padding-inline: 15px;
   min-height: 100vh;
 }
 
@@ -107,4 +107,12 @@
 
 .loadMoreButton:hover {
   cursor: pointer;
+}
+
+/* MOBILE VIEW */
+
+@media screen and (min-width: 410px) and (max-width: 455px) {
+  .mainContainer {
+    zoom: 90%;
+  }
 }

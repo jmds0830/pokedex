@@ -25,7 +25,6 @@ function Stats() {
 
   return (
     <>
-      <hr />
       {pokemonData && (
         <div className={styles.stats}>
           <h2>Base Stats:</h2>
